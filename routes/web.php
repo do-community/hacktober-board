@@ -15,15 +15,10 @@ use App\User;
 */
 
 Route::get('/', function () {
-    return view('welcome');
-});
-
-
-Route::get('/issues', function () {
     
     $issues = Issue::all();
 
-    return view('issues', [
+    return view('index', [
         'issues' => $issues
     ]);
 });

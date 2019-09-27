@@ -12,4 +12,9 @@ class Issue extends Model
     {
         return $this->belongsTo('App\User');
     }
+
+    public function labels()
+    {
+        return $this->belongsToMany('App\Label');
+    }
 }
