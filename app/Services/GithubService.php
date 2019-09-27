@@ -19,13 +19,20 @@ class GithubService
         $this->client = new CurlClient('erikaheidi/hacktober-panel');
     }
 
+    public function getRaw($query)
+    {
+        return $this->get($query);
+    }
+
     public function getIssues($label = 'hacktoberfest')
     {
-        return $this->get(self::$ENDPOINT_ISSUES . '?q=' . $label);
+        $query_string = "?q=label:$label+state:open&type=issues";
+
+        return $this->get(self::$API_URL . self::$ENDPOINT_ISSUES . '?q=' . $query_string);
     }
 
     protected function get($query)
     {
-        return $this->client->get(self::$API_URL . $query);
+        return $this->client->get($query);
     }
 }

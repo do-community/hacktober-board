@@ -3,6 +3,8 @@
 namespace App\Console\Commands;
 
 use App\Issue;
+use App\Label;
+use App\Project;
 use App\Services\GithubService;
 use App\User;
 use Illuminate\Console\Command;
@@ -60,6 +62,9 @@ class FetchIssues extends Command
                 $this->info('Creating new Issue: ' . $raw_issue['title']);
                 $issue = new Issue();
 
+                /************************************
+                 * ISSUE AUTHOR
+                 ************************************/
                 //gets author
                 $author = User::find($raw_issue['user']['id']);
 
@@ -77,14 +82,74 @@ class FetchIssues extends Command
 
                 $issue->user()->associate($author);
 
+                /******************************************
+                 * ISSUE PROJECT
+                 ******************************************/
+                $repository_url = $raw_issue['repository_url'];
+
+                $parsedUrl = parse_url($repository_url);
+                $project_name = str_replace('/repos/', '', $parsedUrl['path']);
+
+                //check if project already exists
+                $project = Project::query('full_name', $project_name)->first();
+
+                if ($project == null) {
+                    //creates new Project
+                    $this->info('Creating new Project: ' . $project_name);
+
+                    $project_info = $github->getRaw($repository_url);
+
+                    if ($project_info['code'] == 200) {
+                        $project = new Project();
+                        $raw_project = json_decode($project_info['body'], true);
+
+                        $project->id = $raw_project['id'];
+                        $project->name = $raw_project['name'];
+                        $project->description = $raw_project['description'];
+                        $project->language = $raw_project['language'];
+                        $project->html_url = $raw_project['html_url'];
+                        $project->full_name = $raw_project['full_name'];
+                        $project->stars = $raw_project['stargazers_count'];
+
+                        $project->save();
+                    }
+                }
+
+                $issue->project()->associate($project);
+
+                /******************************************
+                 * ISSUE CONTENT
+                 *****************************************/
                 $issue->id = $raw_issue['id'];
                 $issue->number = $raw_issue['number'];
+                $issue->html_url = $raw_issue['html_url'];
                 $issue->title = $raw_issue['title'];
                 $issue->body = $raw_issue['body'];
                 $issue->original_created_at = (new \DateTime($raw_issue['created_at']))->format('Y-m-d H:i:s');
                 $issue->original_updated_at = (new \DateTime($raw_issue['updated_at']))->format('Y-m-d H:i:s');
-
                 $issue->save();
+
+                /******************************************
+                 * ISSUE LABELS
+                 *****************************************/
+                $issue_labels = [];
+                foreach ($raw_issue['labels'] as $raw_label) {
+                    $label = Label::where('name', $raw_label['name'])->first();
+
+                    if ($label === null) {
+                        //creates new label
+                        $this->info('Creating new Label: ' . $raw_label['name']);
+
+                        $label = new Label();
+                        $label->name = $raw_label['name'];
+                        $label->save();
+                    }
+
+                    $issue_labels[] = $label->id;
+                }
+
+
+                $issue->labels()->sync($issue_labels);
             }
         }
 

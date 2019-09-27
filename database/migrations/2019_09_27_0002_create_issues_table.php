@@ -17,9 +17,12 @@ class CreateIssuesTable extends Migration
             $table->unsignedBigInteger('id')->primary();
             $table->unsignedInteger('number');
             $table->string('title');
+            $table->string('html_url');
             $table->text('body');
             $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('project_id');
             $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('project_id')->references('id')->on('projects');
             $table->dateTime('original_created_at');
             $table->dateTime('original_updated_at');
             $table->timestamps();

@@ -13,6 +13,11 @@ class Issue extends Model
         return $this->belongsTo('App\User');
     }
 
+    public function project()
+    {
+        return $this->belongsTo('App\Project');
+    }
+
     public function labels()
     {
         return $this->belongsToMany('App\Label');
