@@ -20,8 +20,8 @@ class CreateIssuesTable extends Migration
             $table->text('body');
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
-            $table->timestamp('original_created_at');
-            $table->timestamp('original_updated_at');
+            $table->dateTime('original_created_at');
+            $table->dateTime('original_updated_at');
             $table->timestamps();
         });
     }

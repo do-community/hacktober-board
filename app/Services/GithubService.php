@@ -8,6 +8,8 @@ class GithubService
 {
     static $API_URL = 'https://api.github.com';
 
+    static $ENDPOINT_ISSUES = "/search/issues";
+
     protected $key;
 
     protected $client;
@@ -17,7 +19,12 @@ class GithubService
         $this->client = new CurlClient('erikaheidi/hacktober-panel');
     }
 
-    public function get($query)
+    public function getIssues($label = 'hacktoberfest')
+    {
+        return $this->get(self::$ENDPOINT_ISSUES . '?q=' . $label);
+    }
+
+    protected function get($query)
     {
         return $this->client->get(self::$API_URL . $query);
     }
