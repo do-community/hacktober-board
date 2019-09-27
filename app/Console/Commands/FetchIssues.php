@@ -91,9 +91,9 @@ class FetchIssues extends Command
                 $project_name = str_replace('/repos/', '', $parsedUrl['path']);
 
                 //check if project already exists
-                $project = Project::query('full_name', $project_name)->first();
+                $project = Project::where('full_name', $project_name)->first();
 
-                if ($project == null) {
+                if ($project === null) {
                     //creates new Project
                     $this->info('Creating new Project: ' . $project_name);
 
@@ -113,6 +113,8 @@ class FetchIssues extends Command
 
                         $project->save();
                     }
+                } else {
+                    $this->info('Using Existing Project: ' . $project_name);
                 }
 
                 $issue->project()->associate($project);
@@ -125,6 +127,7 @@ class FetchIssues extends Command
                 $issue->html_url = $raw_issue['html_url'];
                 $issue->title = $raw_issue['title'];
                 $issue->body = $raw_issue['body'];
+                $issue->project_language = $project->language;
                 $issue->original_created_at = (new \DateTime($raw_issue['created_at']))->format('Y-m-d H:i:s');
                 $issue->original_updated_at = (new \DateTime($raw_issue['updated_at']))->format('Y-m-d H:i:s');
                 $issue->save();

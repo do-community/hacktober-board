@@ -17,7 +17,7 @@ class CreateProjectsTable extends Migration
             $table->unsignedBigInteger('id')->primary();
             $table->string('name');
             $table->string('full_name')->unique();
-            $table->string('description')->nullable();
+            $table->text('description')->nullable();
             $table->string('language')->nullable();
             $table->integer('stars');
             $table->string('html_url');

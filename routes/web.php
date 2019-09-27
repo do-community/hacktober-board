@@ -15,11 +15,45 @@ use App\User;
 */
 
 Route::get('/', function () {
-    
-    $issues = Issue::all();
+
+    $limit = 4;
+
+    //get PHP issues
+    $php_issues = Issue::where('project_language', 'PHP')->take($limit)->get();
+
+    //get JS issues
+    $js_issues = Issue::where('project_language', 'JavaScript')->take($limit)->get();
+
+    //get Python issues
+    $python_issues = Issue::where('project_language', 'Python')->take($limit)->get();
+
+    //get TypeScript issues
+    $ts_issues = Issue::where('project_language', 'TypeScript')->take($limit)->get();
+
+
+
+    //get CSS issues
+    $css_issues = Issue::where('project_language', 'CSS')->take(2)->get();
+
+    //get GO issues
+    $go_issues = Issue::where('project_language', 'CSS')->take(2)->get();
+
+    //get C++ issues
+    $cplus_issues = Issue::where('project_language', 'C++')->take(2)->get();
+
+
+    //get Ruby issues
+    $ruby_issues = Issue::where('project_language', 'Ruby')->take(2)->get();
 
     return view('index', [
-        'issues' => $issues
+        'php_issues' => $php_issues,
+        'js_issues'  => $js_issues,
+        'python_issues' => $python_issues,
+        'go_issues' => $go_issues,
+        'css_issues' => $css_issues,
+        'ruby_issues' => $ruby_issues,
+        'ts_issues' => $ts_issues,
+        'cplus_issues' => $cplus_issues,
     ]);
 });
 

@@ -23,6 +23,7 @@ class CreateIssuesTable extends Migration
             $table->unsignedBigInteger('project_id');
             $table->foreign('user_id')->references('id')->on('users');
             $table->foreign('project_id')->references('id')->on('projects');
+            $table->string('project_language', 100)->nullable();
             $table->dateTime('original_created_at');
             $table->dateTime('original_updated_at');
             $table->timestamps();
