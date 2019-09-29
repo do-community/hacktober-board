@@ -14,6 +14,18 @@ services:
     volumes:
       - ./:/var/www
 
+  db:
+    image: mysql:5.7.22
+    container_name: hacktober-db
+    restart: unless-stopped
+    tty: true
+    environment:
+      MYSQL_DATABASE: hacktober
+      MYSQL_ROOT_PASSWORD: h4ckt0b3rd3v
+      SERVICE_TAGS: dev
+      SERVICE_NAME: mysql
+    networks:
+      - hacktober
 
   nginx:
     image: nginx:alpine
