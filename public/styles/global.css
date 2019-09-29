@@ -27,6 +27,12 @@ header .board-title {
   	justify-content: flex-start;
 }
 
+.content div.header {
+	display: block;
+	width: 86%;
+	margin: 1%;
+}
+
 .box {
 	width: 48%;	
 	margin: 1%;

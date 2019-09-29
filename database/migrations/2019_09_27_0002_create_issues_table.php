@@ -18,7 +18,7 @@ class CreateIssuesTable extends Migration
             $table->unsignedInteger('number');
             $table->string('title');
             $table->string('html_url');
-            $table->text('body');
+            $table->longText('body');
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('project_id');
             $table->foreign('user_id')->references('id')->on('users');

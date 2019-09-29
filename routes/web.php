@@ -1,7 +1,7 @@
 <?php
 use Illuminate\Support\Facades\Route;
 use App\Issue;
-use App\User;
+use App\Label;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,44 +16,38 @@ use App\User;
 
 Route::get('/', function () {
 
-    $limit = 4;
+    //a board is a collection of issues.
+    $boards = [];
+    $count = 2;
 
-    //get PHP issues
-    $php_issues = Issue::where('project_language', 'PHP')->take($limit)->get();
+    //get issues by languages
+    $featured_languages = [ 'JavaScript', 'Python', 'PHP', 'Go', 'Ruby', 'TypeScript' ];
+    foreach ($featured_languages as $language) {
+        $boards[] = [
+            'language' => $language,
+            'issues' => Issue::where('project_language', $language)->take($count)->get()
+        ];
+    }
 
-    //get JS issues
-    $js_issues = Issue::where('project_language', 'JavaScript')->take($limit)->get();
+    //get issues by labels
+    $second_level_boards = [];
+    $featured_labels = [ 'good first issue', 'help wanted', 'beginner', 'documentation' ];
+    $count = 3;
 
-    //get Python issues
-    $python_issues = Issue::where('project_language', 'Python')->take($limit)->get();
+    foreach ($featured_labels as $label_name) {
+        $label = Label::where('name', $label_name)->first();
 
-    //get TypeScript issues
-    $ts_issues = Issue::where('project_language', 'TypeScript')->take($limit)->get();
-
-
-
-    //get CSS issues
-    $css_issues = Issue::where('project_language', 'CSS')->take(2)->get();
-
-    //get GO issues
-    $go_issues = Issue::where('project_language', 'CSS')->take(2)->get();
-
-    //get C++ issues
-    $cplus_issues = Issue::where('project_language', 'C++')->take(2)->get();
-
-
-    //get Ruby issues
-    $ruby_issues = Issue::where('project_language', 'Ruby')->take(2)->get();
+        if ($label) {
+            $second_level_boards[] = [
+                'label' => $label_name,
+                'issues' => $label->issues->take($count)
+            ];
+        }
+    }
 
     return view('index', [
-        'php_issues' => $php_issues,
-        'js_issues'  => $js_issues,
-        'python_issues' => $python_issues,
-        'go_issues' => $go_issues,
-        'css_issues' => $css_issues,
-        'ruby_issues' => $ruby_issues,
-        'ts_issues' => $ts_issues,
-        'cplus_issues' => $cplus_issues,
+        'boards' => $boards,
+        'second_level_boards' => $second_level_boards
     ]);
 });
 
