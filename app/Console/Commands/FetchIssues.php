@@ -17,7 +17,7 @@ class FetchIssues extends Command
      *
      * @var string
      */
-    protected $signature = 'hacktober:fetch {label?} {--L|lang=}';
+    protected $signature = 'hacktober:fetch {label?} {--L|lang=} {--S|search=}';
 
     /**
      * The console command description.
@@ -45,17 +45,14 @@ class FetchIssues extends Command
     {
         $label = $this->argument('label');
         $language = $this->option('lang');
+        $search = $this->option('search');
+        
+        $this->info("Fetching Issues from Github...");
 
-        if (!$label) {
-            $label = "hacktoberfest";
-        }
-
-        $this->info("Fetching Issues from Github with label \"$label\"...");
-
-        $response = $github->getIssues($label, $language);
+        $response = $github->getIssues($search, $label, $language);
 
         if ($response['code'] != 200) {
-            $this->error('An error ocurred.');
+            $this->error('An error ocurred: ' . $response['body']);
             exit;
         }
 
@@ -119,6 +116,9 @@ class FetchIssues extends Command
                         $project->stars = $raw_project['stargazers_count'];
 
                         $project->save();
+                    } else {
+                        $this->error('Error fetching project info: ' . $project_info['body']);
+                        exit;
                     }
                 } else {
                     $this->info('Using Existing Project: ' . $project_name);
@@ -134,7 +134,7 @@ class FetchIssues extends Command
                 $issue->html_url = $raw_issue['html_url'];
                 $issue->title = $raw_issue['title'];
                 $issue->body = $raw_issue['body'];
-                $issue->project_language = $project->language;
+                $issue->project_language = $project instanceof Project ? $project->language : null;
                 $issue->original_created_at = (new \DateTime($raw_issue['created_at']))->format('Y-m-d H:i:s');
                 $issue->original_updated_at = (new \DateTime($raw_issue['updated_at']))->format('Y-m-d H:i:s');
                 $issue->save();

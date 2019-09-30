@@ -7,11 +7,10 @@ use Illuminate\Support\ServiceProvider;
 
 class GithubServiceProvider extends ServiceProvider
 {
-
     public function register()
     {
         $this->app->singleton(GithubService::class, function ($app) {
-            return new GithubService();
+            return new GithubService(env('GITHUB_API_TOKEN', ''));
         });
     }
 }

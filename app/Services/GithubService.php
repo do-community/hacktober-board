@@ -10,18 +10,19 @@ class GithubService
 
     static $ENDPOINT_ISSUES = "/search/issues";
 
-    protected $key;
+    protected $token;
 
     protected $client;
 
-    public function __construct($key = null)
+    public function __construct($token = null)
     {
+        $this->token = $token;
         $this->client = new CurlClient('erikaheidi/hacktober-panel');
     }
 
     protected function get($query)
     {
-        return $this->client->get($query);
+        return $this->client->get($query, $this->getDefaultHeaders());
     }
 
     public function getRaw($query)
@@ -29,16 +30,36 @@ class GithubService
         return $this->get($query);
     }
 
-    public function getIssues($label = 'hacktoberfest', $language = null)
+    public function getIssues($search = null, $label = null, $language = null, $cap_date = null)
     {
-        $filter_lang = "";
-        if ($language) {
-            $filter_lang = "+language=$language";
+        $query_string = "?q=$search+is:issue+state:open";
+
+        if (!$cap_date) {
+            $cap_date = date('Y') . '-01-01';
         }
 
-        $date = '2019-01-01';
-        $query_string = "?q=label:$label+state:open+created:>$date+$filter_lang&type=Issues";
+        //issues should have been updated recently
+        $query_string .= "+updated:>$cap_date";
 
+        if ($label) {
+            $query_string .= "+label:$label";
+        }
+        if ($language) {
+            $query_string .= "+language:$language";
+        }
+
+        $query_string .= '&sort=created&order=desc';
         return $this->get(self::$API_URL . self::$ENDPOINT_ISSUES . '?q=' . $query_string);
+    }
+
+    /**
+     * @return array
+     */
+    protected function getDefaultHeaders()
+    {
+        $headers[] = "Accept: application/vnd.github.v3+json";
+        $headers[] = "Authorization: token $this->token";
+
+        return $headers;
     }
 }
