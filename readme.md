@@ -2,16 +2,24 @@
 
 Hacktober-board is an **Open Issues** Board for Hacktoberfest. This project is built in Laravel using MySQL as database.
 
-Initially created at Shark-a-Hack September 2019 edition.
+It is intended to help users, especially beginners, finding issues they can contribute to in order to participate in [Hacktoberfest](https://hacktoberfest.digitalocean.com).
 
+
+Initially created at Shark-a-Hack September 2019 edition.
 Front-end Design by [Eileen Ani](https://github.com/eileenani).
 
 ## Setting Up a Dev Environment
 
-There is a Docker dev environment built in. You'll need Docker and Docker Compose installed.
+A Docker dev environment is included. You'll need Docker and Docker Compose installed.
 
+After cloning the project, copy the `.env
+
+
+### Running the App on Docker
+
+run Docker Compose with:
 ```
-docker compose up
+docker-compose up
 ```
 
 When the containers are up, you need to create a new MySQL user by logging in the container:
