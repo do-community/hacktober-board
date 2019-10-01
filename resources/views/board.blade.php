@@ -5,6 +5,7 @@
         <h2>Featured Issues in the <strong class="highlight">{{ $name }}</strong> Board</h2>
     </div>
 
+    {{ $issues->links() }}
 
             @foreach ($issues as $issue)
         <div class="box">
@@ -33,7 +34,7 @@
             </ul>
         </div>
             @endforeach
-    
+
 
     {{ $issues->links() }}
 

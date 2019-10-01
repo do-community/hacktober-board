@@ -25,7 +25,7 @@ Route::get('/', function () {
     foreach ($featured_languages as $language) {
         $boards[] = [
             'language' => $language,
-            'issues' => Issue::where('project_language', $language)->take($count)->get()
+            'issues' => Issue::where('project_language', $language)->orderBy('original_created_at', 'desc')->take($count)->get()
         ];
     }
 
@@ -40,7 +40,7 @@ Route::get('/', function () {
         if ($label) {
             $second_level_boards[] = [
                 'label' => $label_name,
-                'issues' => $label->issues->take($count)
+                'issues' => $label->issues()->orderBy('original_created_at', 'desc')->take($count)->get()
             ];
         }
     }
@@ -52,7 +52,7 @@ Route::get('/', function () {
 });
 
 Route::get('/b/{language}', function ($language) {
-    $issues = Issue::where('project_language', $language)->paginate(20);
+    $issues = Issue::where('project_language', $language)->orderBy('original_created_at', 'desc')->paginate(20);
 
     if (!$issues) {
         return 'No issues found.';
@@ -73,6 +73,6 @@ Route::get('/l/{label_name}', function ($label_name) {
 
     return view('board', [
         'name' => $label_name,
-        'issues' => $label->issues
+        'issues' => $label->issues()->orderBy('original_created_at', 'desc')->paginate(20)
     ]);
 })->name('label.list');

@@ -149,3 +149,19 @@ ul li:last-child {
   	width:98%;
   }
 }
+
+nav {
+	margin: 20px 0;
+	display: block;
+	width: 100%;
+}
+
+ul.pagination {
+	display: block;
+	margin: 0 auto;
+	text-align: center;
+}
+
+ul.pagination li {
+	display: inline;
+}
