@@ -31,7 +31,7 @@ Route::get('/', function () {
 
     //get issues by labels
     $second_level_boards = [];
-    $featured_labels = [ 'good first issue', 'documentation' ];
+    $featured_labels = [ 'good first issue', 'beginner' ];
     $count = 3;
 
     foreach ($featured_labels as $label_name) {
