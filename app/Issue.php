@@ -3,6 +3,8 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\HtmlString;
+use Parsedown;
 
 class Issue extends Model
 {
@@ -21,5 +23,12 @@ class Issue extends Model
     public function labels()
     {
         return $this->belongsToMany('App\Label');
+    }
+
+    public function getIssueBody()
+    {
+        return new HtmlString(
+            app(Parsedown::class)->setSafeMode(true)->text($this->body)
+        );
     }
 }
