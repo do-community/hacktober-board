@@ -34,6 +34,8 @@ class CurlClient
 
         curl_setopt($curl, CURLOPT_USERAGENT, $this->user_agent);
 
+        print_r(curl_getinfo($curl));
+
         return $this->getQueryResponse($curl);
     }
 

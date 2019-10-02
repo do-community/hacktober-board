@@ -58,6 +58,8 @@ class FetchIssues extends Command
 
         $json = json_decode($response['body'], true);
 
+        $this->info("Total items received: " . count($json['items']));
+
         foreach ($json['items'] as $raw_issue) {
             //tries to locate existing issue with this id
             $issue = Issue::find($raw_issue['id']);
@@ -160,6 +162,8 @@ class FetchIssues extends Command
 
 
                 $issue->labels()->sync($issue_labels);
+            } else {
+                $this->info('Skipping already imported issue: '  . $issue->title);
             }
         }
 

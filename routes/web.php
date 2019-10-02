@@ -20,6 +20,10 @@ Route::get('/', function () {
     $boards = [];
     $count = 2;
 
+    //newest issues
+    $newest_issues = Issue::orderBy('original_created_at', 'desc')->take(4)->get();
+
+
     //get issues by languages
     $featured_languages = [ 'JavaScript', 'Python', 'PHP', 'Ruby', 'Go','TypeScript' ];
     foreach ($featured_languages as $language) {
@@ -46,6 +50,7 @@ Route::get('/', function () {
     }
 
     return view('index', [
+        'newest_issues' => $newest_issues,
         'boards' => $boards,
         'second_level_boards' => $second_level_boards
     ]);

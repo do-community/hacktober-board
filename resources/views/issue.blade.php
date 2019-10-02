@@ -5,11 +5,11 @@
     </div>
 
     <div class="issue-body">
+        <div class="issue-number">#{{ $issue->number }}</div>
         <div class="issue-title">
-            <a href="{{ $issue->html_url }}" title="Visit the Issue Page for more Info" target="_blank">{{ $issue->title }}</a></div>
-        <div class="repo-name"><a href="{{ $issue->project->html_url }}" title="Visit the project page on Github" target="_blank">{{ $issue->project->full_name }}</a></div>
-
-        <span class="issue-number">#{{ $issue->number }}</span>
+            <a href="{{ $issue->html_url }}" title="Visit the Issue Page for more Info" target="_blank">{{ $issue->title }}</a>
+        </div>
+        <div class="repo-name"><a href="{{ $issue->project->html_url }}" title="Visit the project page on Github" target="_blank">{{ $issue->project->full_name }}</a> {{ $issue->created_at->diffForHumans() }}</div>
         <div class="issue-descrip">{{ $issue->body }}</div>
     </div>
 
