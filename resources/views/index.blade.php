@@ -9,7 +9,7 @@
     @foreach ($newest_issues as $issue)
         <div class="box">
             <div class="title">
-               <div class="issue-number"><a href="{{ route('board.list', $issue->project->language) }}" class="highlight">{{ $issue->project->language }}</a></div>
+               <div class="issue-number"><a href="{{ route('board.list', $issue->project_language) }}" class="highlight">{{ $issue->project_language }}</a></div>
                 <a href="{{ $issue->project->html_url }}">{{ $issue->project->full_name }}</a> {{ $issue->created_at->diffForHumans() }}</div>
             <ul>
                 <li>
