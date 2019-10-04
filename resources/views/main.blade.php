@@ -8,7 +8,7 @@
 
         gtag('config', 'UA-149411595-1');
     </script>
-    
+
     <title>Hacktober-Board 2019 - Hacktobefest Issues Board</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" type="text/css" href="/styles/global.css">

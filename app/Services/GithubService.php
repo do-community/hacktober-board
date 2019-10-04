@@ -34,7 +34,7 @@ class GithubService
     {
         $label = 'hacktoberfest';
 
-        $query_string = "$search+label=$label+type:issue+state:open";
+        $query_string = "$search+label:$label+type:issue+state:open";
 
         if (!$cap_date) {
             $cap_date = date('Y') . '-01-01';
