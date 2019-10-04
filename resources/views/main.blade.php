@@ -1,5 +1,14 @@
 <html>
 <head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-149411595-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-149411595-1');
+    </script>
+    
     <title>Hacktober-Board 2019 - Hacktobefest Issues Board</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" type="text/css" href="/styles/global.css">
