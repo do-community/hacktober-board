@@ -180,7 +180,7 @@ ul.pagination li {
 
 .footer {
 	background-color: #39486F;
-	padding: 20px 1%;
+	padding: 20px 2%;
 	margin-top: 60px;
 	display: flex;
 	flex-flow: row wrap;
@@ -188,10 +188,16 @@ ul.pagination li {
 	clear: both;
 }
 
-.footer .column {
+.footer-left {
 	float: left;
-	width: 31%;
-	margin: 1%;
+	width: 600px;
+	margin-right: 80px;
+	/*	text-align: right;*/
+}
+
+.footer-right {
+	float: right;
+	width: 62%;
 }
 
 .footer ul li {
@@ -210,8 +216,4 @@ ul.pagination li {
 	background-color: #FF00AA;
 	color: #1D2C4E;
 	padding: 6px 10px;
-}
-
-.footer .twitter {
-	text-align: right;
 }

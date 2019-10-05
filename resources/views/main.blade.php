@@ -32,7 +32,12 @@
 
 <div class="footer">
 
-    <div class="column">
+    <div class="footer-left">
+        <h2>About</h2>
+        <p>Hacktober-Board is an unofficial issue-finder for <a href="https://hacktoberfest.com" target="_blank" title="Hacktoberfest Official Website">Hacktoberfest</a> created by <a href="https://twitter.com/erikaheidi" title="@erikaheidi">Erika Heidi</a>. You can <a href="https://github.com/erikaheidi/hacktober-board" target="_blank" title="Visit Hacktober-Board on Github">contribute to this project</a> on Github.</p>
+    </div>
+
+    <div class="footer-right">
         <h2>Issues by Language</h2>
         <ul>
             @foreach ($all_languages as $project)
@@ -52,11 +57,6 @@
         </ul>
     </div>
 
-    <div class="column twitter">
-        <h2>About</h2>
-        <p>Hacktober-Board is an unofficial issue-finder for <a href="https://hacktoberfest.com" target="_blank" title="Hacktoberfest Official Website">Hacktoberfest</a> created by <a href="https://twitter.com/erikaheidi" title="@erikaheidi">Erika Heidi</a>. You can <a href="https://github.com/erikaheidi/hacktober-board" target="_blank" title="Visit Hacktober-Board on Github">contribute to this project</a> on Github.</p>
-           <a class="twitter-timeline" data-lang="en" data-width="500" data-height="300" data-theme="dark" data-link-color="#F5F8FA" href="https://twitter.com/hacktoberfest">Tweets by Hacktoberfest</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-    </div>
 </div>
 </body>
 </html>
