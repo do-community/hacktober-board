@@ -48,15 +48,6 @@
         </ul>
     </div>
 
-    <div class="column">
-        <h2>Issues by Label</h2>
-        <ul>
-            @foreach ($all_labels as $label)
-                <li><a href="{{ route('label.list', $label->name) }}" title="View {{ $label->name }} Issues">{{ $label->name }}</a></li>
-            @endforeach
-        </ul>
-    </div>
-
 </div>
 </body>
 </html>

@@ -13,10 +13,8 @@ class MainController extends Controller
     public function __construct()
     {
         $languages = Project::distinct()->get('language');
-        $labels = Label::all();
 
         View::share('all_languages', $languages);
-        View::share('all_labels', $labels);
     }
 
     public function main()
