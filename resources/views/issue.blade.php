@@ -5,12 +5,17 @@
     </div>
 
     <div class="issue-body">
-        <div class="issue-number">#{{ $issue->number }}</div>
-        <div class="issue-title">
-            <a href="{{ $issue->html_url }}" title="Visit the Issue Page for more Info" target="_blank">{{ $issue->title }}</a>
-        </div>
-        <div class="repo-name"><a href="{{ $issue->project->html_url }}" title="Visit the project page on Github" target="_blank">{{ $issue->project->full_name }}</a> {{ $issue->created_at->diffForHumans() }}</div>
-        <div class="issue-descrip">{{ $issue->body }}</div>
+
+            <div class="issue-number">#{{ $issue->number }}</div>
+            <div class="issue-title">
+                <a href="{{ $issue->html_url }}" title="Visit the Issue Page for more Info" target="_blank">{{ $issue->title }}</a>
+            </div>
+
+        @if ($issue->project_language) <div class="issue-language"><a href="{{ route('board.list', $issue->project_language) }}">{{ $issue->project_language }}</a></div> @endif
+
+            <div class="repo-name"><a href="{{ $issue->project->html_url }}" title="Visit the project page on Github" target="_blank">{{ $issue->project->full_name }}</a> {{ $issue->created_at->diffForHumans() }}</div>
+
+            <div class="issue-descrip">{{ $issue->body }}</div>
     </div>
 
     <div class="tags">

@@ -53,7 +53,6 @@
 
     @foreach ($second_level_boards as $board)
         <div class="box">
-            @if ($issue->project_language) <div class="issue-number"><a href="{{ route('board.list', $issue->project_language) }}" class="highlight">{{ $issue->project_language }}</a></div> @endif
             <div class="title"><a href="{{ route('label.list', $board['label']) }}" title="See more Issues with this Label">{{ $board['label'] }}</a></div>
             <ul>
                 @each('issue', $board['issues'], 'issue')

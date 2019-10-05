@@ -29,5 +29,34 @@
     @yield('content')
 
 </section>
+
+<div class="footer">
+
+    <div class="column">
+        <h2>Issues by Language</h2>
+        <ul>
+            @foreach ($all_languages as $project)
+                @if ($project->language)
+                    <li><a href="{{ route('board.list', $project->language) }}" title="View {{ $project->language }} Issues">{{ $project->language }}</a></li>
+                @endif
+            @endforeach
+        </ul>
+    </div>
+
+    <div class="column">
+        <h2>Issues by Label</h2>
+        <ul>
+            @foreach ($all_labels as $label)
+                <li><a href="{{ route('label.list', $label->name) }}" title="View {{ $label->name }} Issues">{{ $label->name }}</a></li>
+            @endforeach
+        </ul>
+    </div>
+
+    <div class="column twitter">
+        <h2>About</h2>
+        <p>Hacktober-Board is an unofficial issue-finder for <a href="https://hacktoberfest.com" target="_blank" title="Hacktoberfest Official Website">Hacktoberfest</a> created by <a href="https://twitter.com/erikaheidi" title="@erikaheidi">Erika Heidi</a>. You can <a href="https://github.com/erikaheidi/hacktober-board" target="_blank" title="Visit Hacktober-Board on Github">contribute to this project</a> on Github.</p>
+           <a class="twitter-timeline" data-lang="en" data-width="500" data-height="300" data-theme="dark" data-link-color="#F5F8FA" href="https://twitter.com/hacktoberfest">Tweets by Hacktoberfest</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+    </div>
+</div>
 </body>
 </html>

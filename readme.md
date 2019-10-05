@@ -1,19 +1,17 @@
 ## Hacktober Board
 
-Hacktober-board is an **Open Issues** Board for Hacktoberfest. This project is built in Laravel using MySQL as database.
+Hacktober-board is an unofficial **Open Issues Board** for [Hacktoberfest](https://digitalocean.com). This project is built in Laravel using MySQL as database.
 
 It is intended to help users, especially beginners, finding issues they can contribute to in order to participate in [Hacktoberfest](https://hacktoberfest.digitalocean.com).
 
 
-Initially created at Shark-a-Hack September 2019 edition.
+Initially created at the internal DigitalOcean Hackaton a.k.a. Shark-a-Hack, September 2019 edition.
+
 Front-end Design by [Eileen Ani](https://github.com/eileenani).
 
 ## Setting Up a Dev Environment
 
 A Docker dev environment is included. You'll need Docker and Docker Compose installed.
-
-After cloning the project, copy the `.env
-
 
 ### Running the App on Docker
 
@@ -45,13 +43,16 @@ FLUSH PRIVILEGES;
 
 Exit the MySQL prompt and the container, coming back to your regular shell.
 
-Run migrations inside the container:
+To create the database tables, run migrations inside the container:
 
 ```
 docker-compose exec app php artisan migrate
 ```
 
-Now you can import issues with:
+
+To import real issues from Github, you'll need to define a Github API Token in the `.env` file. Look for the variable `GITHUB_API_TOKEN`.
+
+After setting up the API key, you can import issues with:
 
 ```
 docker-compose exec app php artisan hacktober:fetch

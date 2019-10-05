@@ -107,6 +107,19 @@ ul li:last-child {
 	font-size: 14px;
 }
 
+.issue-language {
+	clear: both;
+	float: right;
+	margin: 1px;
+}
+
+.issue-language a {
+	background-color: #FF00AA;
+	color: #F0F0F0;
+	font-size: 12px;
+	padding: 2px;
+}
+
 .issue-descrip {
 	max-height: 60px;
 	overflow: hidden;
@@ -165,6 +178,40 @@ ul.pagination li {
 	display: inline;
 }
 
-div.footer {
+.footer {
+	background-color: #39486F;
+	padding: 20px 1%;
+	margin-top: 60px;
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: flex-start;
+	clear: both;
+}
 
+.footer .column {
+	float: left;
+	width: 31%;
+	margin: 1%;
+}
+
+.footer ul li {
+	margin: 1px;
+	padding: 6px 10px;
+	border-bottom: 1px solid #39486F;
+	display: inline-flex;
+}
+
+.footer ul li a {
+	background-color: #1D2C4E;
+	padding: 6px 10px;
+}
+
+.footer ul li a:hover {
+	background-color: #FF00AA;
+	color: #1D2C4E;
+	padding: 6px 10px;
+}
+
+.footer .twitter {
+	text-align: right;
 }

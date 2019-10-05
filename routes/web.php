@@ -1,7 +1,5 @@
 <?php
 use Illuminate\Support\Facades\Route;
-use App\Issue;
-use App\Label;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,70 +12,8 @@ use App\Label;
 |
 */
 
-Route::get('/', function () {
+Route::get('/', 'MainController@main');
 
-    //a board is a collection of issues.
-    $boards = [];
-    $count = 2;
+Route::get('/b/{language}', 'MainController@languageBoard')->name('board.list');
 
-    //newest issues
-    $newest_issues = Issue::orderBy('original_created_at', 'desc')->take(4)->get();
-
-
-    //get issues by languages
-    $featured_languages = [ 'JavaScript', 'Python', 'PHP', 'Ruby', 'Go','TypeScript' ];
-    foreach ($featured_languages as $language) {
-        $boards[] = [
-            'language' => $language,
-            'issues' => Issue::where('project_language', $language)->orderBy('original_created_at', 'desc')->take($count)->get()
-        ];
-    }
-
-    //get issues by labels
-    $second_level_boards = [];
-    $featured_labels = [ 'good first issue', 'beginner' ];
-    $count = 3;
-
-    foreach ($featured_labels as $label_name) {
-        $label = Label::where('name', $label_name)->first();
-
-        if ($label) {
-            $second_level_boards[] = [
-                'label' => $label_name,
-                'issues' => $label->issues()->orderBy('original_created_at', 'desc')->take($count)->get()
-            ];
-        }
-    }
-
-    return view('index', [
-        'newest_issues' => $newest_issues,
-        'boards' => $boards,
-        'second_level_boards' => $second_level_boards
-    ]);
-});
-
-Route::get('/b/{language}', function ($language) {
-    $issues = Issue::where('project_language', $language)->orderBy('original_created_at', 'desc')->paginate(20);
-
-    if (!$issues) {
-        return 'No issues found.';
-    }
-
-    return view('board', [
-        'name' => $language,
-        'issues' => $issues
-    ]);
-})->name('board.list');
-
-Route::get('/l/{label_name}', function ($label_name) {
-    $label = Label::where('name', $label_name)->first();
-
-    if (!$label) {
-        return 'Error: Label not found.';
-    }
-
-    return view('board', [
-        'name' => $label_name,
-        'issues' => $label->issues()->orderBy('original_created_at', 'desc')->paginate(20)
-    ]);
-})->name('label.list');
+Route::get('/l/{label_name}', 'MainController@labelBoard')->name('label.list');
