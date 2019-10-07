@@ -217,3 +217,26 @@ ul.pagination li {
 	color: #1D2C4E;
 	padding: 6px 10px;
 }
+
+.labels {
+	padding: 0px 40px;
+}
+
+.labels ul li {
+	border-bottom: 0px;
+	padding: 6px 10px;
+	display: inline-flex;
+}
+
+.labels ul li a {
+	background-color: #FFF922;
+	color: #000;
+	padding: 6px 10px;
+	text-decoration: none;
+}
+
+.labels ul li a:hover {
+	background-color: #FF00AA;
+	color: #000;
+	padding: 6px 10px;
+}

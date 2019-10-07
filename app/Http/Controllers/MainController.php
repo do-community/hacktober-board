@@ -87,4 +87,11 @@ class MainController extends Controller
             'issues' => $label->issues()->orderBy('original_created_at', 'desc')->paginate(20)
         ]);
     }
+
+    function labelsAll()
+    {
+        return view('labels', [
+            'labels' => Label::all()
+        ]);
+    }
 }
