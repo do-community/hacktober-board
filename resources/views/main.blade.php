@@ -1,4 +1,4 @@
-<html>
+<html lang="en">
 <head>
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-149411595-1"></script>
     <script>
@@ -18,9 +18,9 @@
 </head>
 <body>
 <header>
-			<span class="logo">
-				<img src="/img/hacktoberfest-logo.svg" width="475" />
-			</span>
+    <span class="logo">
+        <img alt="Hacktoberfest logo" src="/img/hacktoberfest-logo.svg" width="475" />
+    </span>
     <span class="board-title"><a href="/">Issues Board</a></span>
 </header>
 
