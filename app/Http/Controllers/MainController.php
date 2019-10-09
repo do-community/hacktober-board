@@ -7,6 +7,7 @@ use App\Project;
 use App\Issue;
 use App\Label;
 use Illuminate\Support\Facades\View;
+use Symfony\Component\Debug\Debug;
 
 class MainController extends Controller
 {
@@ -29,7 +30,7 @@ class MainController extends Controller
 
 
         //get issues by languages
-        $featured_languages = [ 'JavaScript', 'Python', 'PHP', 'Ruby', 'Go','TypeScript' ];
+        $featured_languages = ['JavaScript', 'Python', 'PHP', 'Ruby', 'Go', 'TypeScript'];
         foreach ($featured_languages as $language) {
             $boards[] = [
                 'language' => $language,
@@ -39,7 +40,7 @@ class MainController extends Controller
 
         //get issues by labels
         $second_level_boards = [];
-        $featured_labels = [ 'good first issue', 'documentation' ];
+        $featured_labels = ['good first issue', 'documentation'];
         $count = 3;
 
         foreach ($featured_labels as $label_name) {
@@ -73,7 +74,7 @@ class MainController extends Controller
             'issues' => $issues
         ]);
     }
-    
+
     function labelBoard($label_name)
     {
         $label = Label::where('name', $label_name)->first();
@@ -92,6 +93,13 @@ class MainController extends Controller
     {
         return view('labels', [
             'labels' => Label::all()
+        ]);
+    }
+
+    public function projectsAll()
+    {
+        return view('projects', [
+            'projects' => Project::with('issues')->orderBy('stars', 'desc')->paginate(20)
         ]);
     }
 }
