@@ -155,8 +155,13 @@ ul li:last-child {
 .project-stars {
     float: right;
     font-size: 14px;
-
 }
+
+.octicon {
+    display: inline-block;
+    fill: currentColor;
+}
+
 
 @media only screen and (max-width: 900px) {
   header .board-title {
