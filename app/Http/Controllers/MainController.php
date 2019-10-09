@@ -7,7 +7,6 @@ use App\Project;
 use App\Issue;
 use App\Label;
 use Illuminate\Support\Facades\View;
-use Symfony\Component\Debug\Debug;
 
 class MainController extends Controller
 {
