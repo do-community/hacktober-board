@@ -20,8 +20,8 @@ services:
     restart: unless-stopped
     tty: true
     environment:
-      MYSQL_DATABASE: hacktober
-      MYSQL_ROOT_PASSWORD: h4ckt0b3rd3v
+      MYSQL_DATABASE: ${DB_DATABASE}
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
       SERVICE_TAGS: dev
       SERVICE_NAME: mysql
     networks:
