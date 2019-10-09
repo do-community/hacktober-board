@@ -35,7 +35,7 @@
     @endforeach
 
     <div class="header">
-        <h2>Featured Issues By <a href="#" class="highlight">Language</a></h2>
+        <h2>Featured Issues By <strong class="highlight">Language</strong></h2>
     </div>
 
     @foreach ($boards as $board)
@@ -48,7 +48,7 @@
     @endforeach
 
     <div class="header">
-        <h2>Featured Issues For <a href="#" class="highlight">Beginners</a> </h2>
+        <h2>Featured Issues For <strong class="highlight">Beginners</strong> </h2>
     </div>
 
     @foreach ($second_level_boards as $board)
