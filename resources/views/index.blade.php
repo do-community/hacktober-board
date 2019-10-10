@@ -9,7 +9,7 @@
     @foreach ($newest_issues as $issue)
         <div class="box">
             <div class="title">
-               @if ($issue->project_language) <div class="issue-number"><a href="{{ route('board.list', $issue->project_language) }}" class="highlight">{{ $issue->project_language }}</a></div> @endif
+               @if ($issue->project_language) <div class="issue-number"><a href="{{ route('board.list', urlencode($issue->project_language)) }}" class="highlight">{{ $issue->project_language }}</a></div> @endif
                 <a href="{{ $issue->project->html_url }}">{{ $issue->project->full_name }}</a> {{ $issue->created_at->diffForHumans() }}</div>
             <ul>
                 <li>
@@ -26,7 +26,7 @@
 
                     <div class="tags">
                         @foreach ($issue->labels as $label)
-                            <span class="tag"><a href="{{ route('label.list', $label->name) }}" title="See more Issues with this Label">{{ $label->name }}</a></span>
+                            <span class="tag"><a href="{{ route('label.list', urlencode($label->name)) }}" title="See more Issues with this Label">{{ $label->name }}</a></span>
                         @endforeach
                     </div>
                 </li>
@@ -40,7 +40,7 @@
 
     @foreach ($boards as $board)
     <div class="box">
-        <div class="title"><a href="{{ route('board.list', $board['language']) }}">{{ $board['language'] }}</a></div>
+        <div class="title"><a href="{{ route('board.list', urlencode($board['language'])) }}">{{ $board['language'] }}</a></div>
         <ul>
             @each('issue', $board['issues'], 'issue')
         </ul>
@@ -53,7 +53,7 @@
 
     @foreach ($second_level_boards as $board)
         <div class="box">
-            <div class="title"><a href="{{ route('label.list', $board['label']) }}" title="See more Issues with this Label">{{ $board['label'] }}</a></div>
+            <div class="title"><a href="{{ route('label.list', urlencode($board['label'])) }}" title="See more Issues with this Label">{{ $board['label'] }}</a></div>
             <ul>
                 @each('issue', $board['issues'], 'issue')
             </ul>
