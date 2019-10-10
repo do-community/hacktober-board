@@ -34,7 +34,7 @@ header .board-title {
 }
 
 .box {
-	width: 48%;	
+	width: 48%;
 	margin: 1%;
 	background: #1D2C4E;
 	box-shadow: 0px 50px 100px rgba(0, 0, 0, 0.2);
@@ -151,6 +151,17 @@ ul li:last-child {
 	font-size: 12px;
 	margin-bottom: 20px;
 }
+
+.project-stars {
+    float: right;
+    font-size: 14px;
+}
+
+.octicon {
+    display: inline-block;
+    fill: currentColor;
+}
+
 
 @media only screen and (max-width: 900px) {
   header .board-title {

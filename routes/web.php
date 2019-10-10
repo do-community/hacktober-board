@@ -19,3 +19,6 @@ Route::get('/b/{language}', 'MainController@languageBoard')->name('board.list');
 Route::get('/l/{label_name}', 'MainController@labelBoard')->name('label.list');
 
 Route::get('/l', 'MainController@labelsAll')->name('labels.all');
+
+Route::get('/p', 'MainController@ProjectsAll')->name('project.all');
+

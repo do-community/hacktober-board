@@ -48,7 +48,7 @@ class GithubService
         }
 
         $query_string .= '&sort=created&order=desc&per_page=100';
-        
+
         return $this->get(self::$API_URL . self::$ENDPOINT_ISSUES . '?q=' . $query_string);
     }
 

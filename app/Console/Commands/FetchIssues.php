@@ -46,7 +46,7 @@ class FetchIssues extends Command
         $label = $this->argument('label');
         $language = $this->option('lang');
         $search = $this->option('search');
-        
+
         $this->info("Fetching Issues from Github...");
 
         $response = $github->getIssues($search, $label, $language);
