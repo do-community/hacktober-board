@@ -47,8 +47,8 @@ class GithubService
             $query_string .= "+language:$language";
         }
 
-        $query_string .= '&sort=created&order=desc&per_page=100';
-        
+        $query_string .= '&sort=created&order=desc&page=7&per_page=100';
+
         return $this->get(self::$API_URL . self::$ENDPOINT_ISSUES . '?q=' . $query_string);
     }
 
