@@ -101,4 +101,13 @@ class MainController extends Controller
             'projects' => Project::with('issues')->orderBy('stars', 'desc')->paginate(20)
         ]);
     }
+
+    public function issuesAll()
+    {
+        return view('issues', [
+            'issues' =>      Issue::with('project')->orderBy('original_created_at', 'desc')->paginate(20)
+        ]);
+    }
+
+
 }
