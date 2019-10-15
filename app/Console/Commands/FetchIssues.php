@@ -17,7 +17,7 @@ class FetchIssues extends Command
      *
      * @var string
      */
-    protected $signature = 'hacktober:fetch {label?} {--L|lang=} {--S|search=}';
+    protected $signature = 'hacktober:fetch {label?} {--L|lang=} {--S|search=} {--P|page=}';
 
     /**
      * The console command description.
@@ -46,10 +46,11 @@ class FetchIssues extends Command
         $label = $this->argument('label');
         $language = $this->option('lang');
         $search = $this->option('search');
+        $page = $this->option('page');
 
         $this->info("Fetching Issues from Github...");
 
-        $response = $github->getIssues($search, $label, $language);
+        $response = $github->getIssues($search, $label, $language, $page);
 
         if ($response['code'] != 200) {
             $this->error('An error ocurred: ' . $response['body']);

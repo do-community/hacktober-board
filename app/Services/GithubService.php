@@ -30,7 +30,7 @@ class GithubService
         return $this->get($query);
     }
 
-    public function getIssues($search = null, $language = null, $cap_date = null)
+    public function getIssues($search = null, $language = null, $cap_date = null, $page = 1)
     {
         $label = 'hacktoberfest';
 
@@ -47,7 +47,7 @@ class GithubService
             $query_string .= "+language:$language";
         }
 
-        $query_string .= '&sort=created&order=desc&per_page=100';
+        $query_string .= '&sort=created&order=desc&per_page=100&page=' . $page;
 
         return $this->get(self::$API_URL . self::$ENDPOINT_ISSUES . '?q=' . $query_string);
     }
