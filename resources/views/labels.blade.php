@@ -6,11 +6,11 @@
     </div>
 
     <div class="labels">
-        <ul>	
-            @foreach ($labels as $label)	
-                <li><a href="{{ route('label.list', $label->name) }}" title="View {{ $label->name }} Issues">{{ $label->name }}</a></li>	
-            @endforeach	
-        </ul>	
+        <ul>
+            @foreach ($labels as $label)
+                <li><a href="{{ route('label.list', urlencode($label->name)) }}" title="View {{ $label->name }} Issues">{{ $label->name }}</a></li>
+            @endforeach
+        </ul>
     </div>
 
 @endsection

@@ -26,7 +26,7 @@
 
                 <div class="tags">
                     @foreach ($issue->labels as $label)
-                        <span class="tag"><a href="{{ route('label.list', $label->name) }}" title="See more Issues with this Label">{{ $label->name }}</a></span>
+                        <span class="tag"><a href="{{ route('label.list', urlencode($label->name)) }}" title="See more Issues with this Label">{{ $label->name }}</a></span>
                     @endforeach
                 </div>
             </li>
