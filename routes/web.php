@@ -22,3 +22,5 @@ Route::get('/l', 'MainController@labelsAll')->name('labels.all');
 
 Route::get('/p', 'MainController@ProjectsAll')->name('project.all');
 
+Route::get('/i', 'MainController@IssuesAll')->name('issues.all');
+
