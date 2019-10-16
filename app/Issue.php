@@ -10,6 +10,18 @@ class Issue extends Model
 {
     public $incrementing = false;
 
+    public function scopeFilter($query, $filter)
+    {
+        if (isset($filter['language'])) {
+            $query->where('project_language', '=', $filter['language']);
+        }
+        if (isset($filter['label'])) {
+            $query->whereHas('labels', function($query) use ($filter) {
+                $query->where('name', $filter['label']);
+            });
+        }
+    }
+
     public function user()
     {
         return $this->belongsTo('App\User');

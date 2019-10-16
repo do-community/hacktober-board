@@ -2,7 +2,11 @@
 
 @section('content')
     <div class="header">
-        <h2>All Issues Board</h2>
+        <div class="header">
+            <h2>Featured Issues
+                @if ($filter) in the <strong class="highlight">{{ implode(' ',$filter) }}</strong> @endif
+                Board</h2>
+        </div>
     </div>
 
     {{ $issues->links() }}
@@ -11,7 +15,7 @@
         <div class="box">
             <div class="title">
                 @if ($issue->project_language)
-                    <div class="issue-number"><a href="{{ route('board.list', $issue->project_language) }}"
+                    <div class="issue-number"><a href="{{ route('issues', ['filter' => ['language' => urlencode($issue->project_language)]]) }}"
                                                  class="highlight">{{ $issue->project_language }}</a></div> @endif
                 <a href="{{ $issue->project->html_url }}">{{ $issue->project->full_name }}</a> {{ $issue->created_at->diffForHumans() }}
             </div>
@@ -34,7 +38,7 @@
 
                     <div class="tags">
                         @foreach ($issue->labels as $label)
-                            <span class="tag"><a href="{{ route('label.list', $label->name) }}"
+                            <span class="tag"><a href="{{ route('issues', ['filter' => ['label' => urlencode($label->name)]]) }}"
                                                  title="See more Issues with this Label">{{ $label->name }}</a></span>
                         @endforeach
                     </div>

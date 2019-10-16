@@ -60,35 +60,17 @@ class MainController extends Controller
         ]);
     }
 
-    function languageBoard($language)
+    public function issues(Request $request)
     {
-        $issues = Issue::where('project_language', $language)->orderBy('original_created_at', 'desc')->paginate(20);
-
-        if (!$issues) {
-            return 'No issues found.';
-        }
-
-        return view('board', [
-            'name' => $language,
-            'issues' => $issues
+        return view('issues', [
+            'filter' => $request->get('filter'),
+            'issues' => Issue::filter($request->get('filter'))
+                ->with('project')
+                ->orderBy('original_created_at', 'desc')->paginate(20)
         ]);
     }
 
-    function labelBoard($label_name)
-    {
-        $label = Label::where('name', $label_name)->first();
-
-        if (!$label) {
-            return 'Error: Label not found.';
-        }
-
-        return view('board', [
-            'name' => $label_name,
-            'issues' => $label->issues()->orderBy('original_created_at', 'desc')->paginate(20)
-        ]);
-    }
-
-    function labelsAll()
+    public function labelsAll()
     {
         return view('labels', [
             'labels' => Label::all()
@@ -99,13 +81,6 @@ class MainController extends Controller
     {
         return view('projects', [
             'projects' => Project::with('issues')->orderBy('stars', 'desc')->paginate(20)
-        ]);
-    }
-
-    public function issuesAll()
-    {
-        return view('issues', [
-            'issues' =>      Issue::with('project')->orderBy('original_created_at', 'desc')->paginate(20)
         ]);
     }
 
