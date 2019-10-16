@@ -42,7 +42,7 @@
     <div class="box">
         <div class="title"><a href="{{ route('board.list', urlencode($board['language'])) }}">{{ $board['language'] }}</a></div>
         <ul>
-            @each('partials/issue', $board['issues'], 'issue')
+            @each('partials/issue.grouped', $board['issues'], 'issue')
         </ul>
     </div>
     @endforeach
@@ -55,7 +55,7 @@
         <div class="box">
             <div class="title"><a href="{{ route('label.list', urlencode($board['label'])) }}" title="See more Issues with this Label">{{ $board['label'] }}</a></div>
             <ul>
-                @each('partials/issue', $board['issues'], 'issue')
+                @each('partials/issue.grouped', $board['issues'], 'issue')
             </ul>
         </div>
     @endforeach

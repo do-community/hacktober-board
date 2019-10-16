@@ -14,7 +14,7 @@
                 <a href="{{ $project->html_url }}">{{ $project->full_name }}</a>
             </div>
             <ul>
-                @each('partials/issue', $project['issues'], 'issue')
+                @each('partials/issue.grouped', $project['issues'], 'issue')
             </ul>
         </div>
     @endforeach
