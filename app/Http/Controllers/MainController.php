@@ -62,6 +62,7 @@ class MainController extends Controller
 
     public function issues(Request $request)
     {
+
         return view('issues', [
             'filter' => $request->get('filter'),
             'issues' => Issue::filter($request->get('filter'))
@@ -83,6 +84,5 @@ class MainController extends Controller
             'projects' => Project::with('issues')->orderBy('stars', 'desc')->paginate(20)
         ]);
     }
-
 
 }
