@@ -62,6 +62,7 @@ class MainController extends Controller
 
     function languageBoard($language)
     {
+        $language = urldecode($language);
         $issues = Issue::where('project_language', $language)->orderBy('original_created_at', 'desc')->paginate(20);
 
         if (!$issues) {
@@ -76,6 +77,8 @@ class MainController extends Controller
 
     function labelBoard($label_name)
     {
+        $label_name = urldecode($label_name);
+
         $label = Label::where('name', $label_name)->first();
 
         if (!$label) {
