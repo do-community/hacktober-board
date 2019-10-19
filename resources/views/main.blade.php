@@ -42,7 +42,7 @@
         <ul>
             @foreach ($all_languages as $project)
                 @if ($project->language)
-                    <li><a href="{{ route('board.list', $project->language) }}" title="View {{ $project->language }} Issues">{{ $project->language }}</a></li>
+                    <li><a href="{{ route('board.list', urlencode($project->language)) }}" title="View {{ $project->language }} Issues">{{ $project->language }}</a></li>
                 @endif
             @endforeach
         </ul>
