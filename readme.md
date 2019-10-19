@@ -5,13 +5,17 @@ Hacktober-board is an unofficial **Open Issues Board** for [Hacktoberfest](https
 It is intended to help users, especially beginners, finding issues they can contribute to in order to participate in [Hacktoberfest](https://hacktoberfest.digitalocean.com).
 
 ## Setting Up a Dev Environment
+There is two different base configuration included to set up your Dev Environment nice and smoothly:
 
+Vanilla _Docker/Docker Compose_ and _DDEV_ 
 
-A Docker dev environment is included. You'll need Docker and Docker Compose installed. To set these up, you can follow [this tutorial](https://www.digitalocean.com/community/tutorials/how-to-install-docker-compose-on-ubuntu-18-04).
+Just pic the one you are either more familiar with or that better fits your need.
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-### Running the App on Docker
+### Running the App on Docker/Docker Compose
+
+You'll need Docker and Docker Compose installed. To set these up, you can follow [this tutorial](https://www.digitalocean.com/community/tutorials/how-to-install-docker-compose-on-ubuntu-18-04).
 
 First, get the environment up and running with:
 ```
@@ -64,6 +68,58 @@ docker-compose exec app php artisan hacktober:fetch
 ```
 
 This will populate the database with real issues from Github.
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+### Running the App on DDEV
+
+You'll need Docker, Docker Compose and DDEV installed. To set these up, you can follow [this tutorial](https://www.ddev.com/get-started/).
+
+First, get the environment up and running with:
+```
+ddev start
+```
+
+When DDEV is up you will need to install the app itself and all composer requirements:
+
+```
+ddev composer install
+```
+
+Next confiugre the application for use with ddev by copying the the .env.ddev.example file to .env:
+
+```
+cp .env.ddev.example .env
+```
+
+Set up the database:
+
+DDEV ships with an empty database and a all user privileges set up.
+
+To create the database tables, run migrations inside the container:
+
+```
+ddev exec php artisan migrate
+```
+
+To fill the database with sample data, run the `db:seed` command:
+
+```
+dddev exec php artisan db:seed
+```
+
+
+To import real issues from Github, you'll need to define a Github API Token in the `.env` file. Look for the variable `GITHUB_API_TOKEN`.
+
+After setting up the API key, you can import issues with:
+
+```
+ddev exec php artisan hacktober:fetch
+```
+
+This will populate the database with real issues from Github.
+
+
 
 ## About
 
