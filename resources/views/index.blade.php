@@ -13,12 +13,12 @@
     </div>
 
     @foreach ($boards as $board)
-    <div class="box">
-        <div class="title"><a href="{{ route('board.list', urlencode($board['language'])) }}">{{ $board['language'] }}</a></div>
-        <ul>
-            @each('partials/issue.grouped', $board['issues'], 'issue')
-        </ul>
-    </div>
+        <div class="box">
+            <div class="title"><a href="{{ route('issues', ['filter' => ['language' => $board['language']]]) }}">{{ $board['language'] }}</a></div>
+            <ul>
+                @each('partials/issue.grouped', $board['issues'], 'issue')
+            </ul>
+        </div>
     @endforeach
 
     <div class="header">
@@ -27,7 +27,7 @@
 
     @foreach ($second_level_boards as $board)
         <div class="box">
-            <div class="title"><a href="{{ route('label.list', urlencode($board['label'])) }}" title="See more Issues with this Label">{{ $board['label'] }}</a></div>
+            <div class="title"><a href="{{ route('issues', ['filter' => ['label' => $board['label']]]) }}" title="See more Issues with this Label">{{ $board['label'] }}</a></div>
             <ul>
                 @each('partials/issue.grouped', $board['issues'], 'issue')
             </ul>

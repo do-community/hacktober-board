@@ -42,7 +42,7 @@
         <ul>
             @foreach ($all_languages as $project)
                 @if ($project->language)
-                    <li><a href="{{ route('board.list', urlencode($project->language)) }}" title="View {{ $project->language }} Issues">{{ $project->language }}</a></li>
+                    <li><a href="{{ route('issues', ['filter' => ['language' => $project->language]]) }}" title="View {{ $project->language }} Issues">{{ $project->language }}</a></li>
                 @endif
             @endforeach
         </ul>
@@ -51,8 +51,8 @@
         <hr />
         <div class="issues-and-labels">
              <ul>
-                <li><a href="/labels">All labels</a></li>
-                <li><a href="/projects">All Projects</a></li>
+                <li><a href="/l">All labels</a></li>
+                <li><a href="/p">All Projects</a></li>
             </ul>
         </div>
         <div id="footer-logo">

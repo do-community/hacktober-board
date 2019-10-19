@@ -2,7 +2,11 @@
 
 @section('content')
     <div class="header">
-        <h2>All Issues Board</h2>
+        <div class="header">
+            <h2>Featured Issues
+                @if ($filter) in the <strong class="highlight">{{ implode(' ',$filter) }}</strong> @endif
+                Board</h2>
+        </div>
     </div>
 
     {{ $issues->links() }}

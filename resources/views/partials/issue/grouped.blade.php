@@ -15,12 +15,16 @@
         </div>
 
         @if ($issue->project_language)
-            <div class="issue-language"><a
-                    href="{{ route('board.list', urlencode($issue->project_language)) }}">{{ $issue->project_language }}</a>
-            </div> @endif
+            <div class="issue-language">
+                <a href="{{ route('issues', ['filter' => ['language' => $issue->project_language]]) }}">
+                    {{ $issue->project_language }}
+                </a>
+            </div>
+        @endif
 
-        <div class="repo-name"><a href="{{ $issue->project->html_url }}" title="Visit the project page on Github"
-                                  target="_blank">{{ $issue->project->full_name }}</a> {{ $issue->created_at->diffForHumans() }}
+        <div class="repo-name">
+            <a href="{{ $issue->project->html_url }}" title="Visit the project page on Github"
+               target="_blank">{{ $issue->project->full_name }}</a> {{ $issue->created_at->diffForHumans() }}
         </div>
 
         <div class="issue-descrip">{{ $issue->body }}</div>
@@ -28,7 +32,7 @@
 
     <div class="tags">
         @foreach ($issue->labels as $label)
-            <span class="tag"><a href="{{ route('label.list', urlencode($label->name)) }}"
+            <span class="tag"><a href="{{ route('issues', ['filter' => ['label' => $label->name]]) }}"
                                  title="See more Issues with this Label">{{ $label->name }}</a></span>
         @endforeach
     </div>

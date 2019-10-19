@@ -14,12 +14,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'MainController@main')->name('home');
 
-Route::get('/b/{language}', 'MainController@languageBoard')->name('board.list');
+Route::get('/i', 'MainController@Issues')->name('issues');
 
-Route::get('/l/{label_name}', 'MainController@labelBoard')->name('label.list');
-
-Route::get('/labels', 'MainController@labelsAll')->name('labels.all');
+Route::get('/l', 'MainController@labelsAll')->name('labels.all');
 
 Route::get('/p', 'MainController@ProjectsAll')->name('project.all');
-
-Route::get('/i', 'MainController@IssuesAll')->name('issues.all');
