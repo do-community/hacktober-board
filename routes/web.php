@@ -12,13 +12,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', 'MainController@main');
+Route::get('/', 'MainController@main')->name('home');
 
 Route::get('/i', 'MainController@Issues')->name('issues');
 
 Route::get('/l', 'MainController@labelsAll')->name('labels.all');
 
 Route::get('/p', 'MainController@ProjectsAll')->name('project.all');
-
-
-
