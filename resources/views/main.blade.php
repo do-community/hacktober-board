@@ -47,7 +47,21 @@
             @endforeach
         </ul>
     </div>
-
+    <div id="issues-and-labels-wrap">
+        <hr />
+        <div class="issues-and-labels">
+             <ul>
+                <li><a href="/labels">All labels</a></li>
+                <li><a href="/projects">All Projects</a></li>
+            </ul>
+        </div>
+        <div id="footer-logo">
+        <a href="{{route('home')}}"><img src="/img/hacktoberfest-logo.svg" />
+        </div>
+        <div id="hacktobercopy">
+            Hacktober Board  2019
+        </div>
+    </div>
 </div>
 </body>
 </html>
