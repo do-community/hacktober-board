@@ -17,10 +17,13 @@
                 <p>{{ $issue->user->username }}</p>
             </div>
 
-            <div class="issue-body">
+            <div class="issue-body @if ($issue->closed) closed @endif">
                 <div class="issue-number">#{{ $issue->number }}</div>
-                <div class="issue-title"><a href="{{ $issue->html_url }}"
-                                            title="Visit the Issue Page for more Info">{{ $issue->title }}</a></div>
+                <div class="issue-title">
+                    <a href="{{ $issue->html_url }}" title="Visit the Issue Page for more Info">
+                        @if ($issue->closed)[CLOSED] @endif{{ $issue->title }}
+                    </a>
+                </div>
                 <div class="issue-descrip">{{ $issue->body }}</div>
             </div>
 
