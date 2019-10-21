@@ -285,3 +285,7 @@ ul.pagination li {
     color: #000;
     padding: 6px 10px;
 }
+
+.closed, .disabled {
+    opacity: 0.3;
+}
