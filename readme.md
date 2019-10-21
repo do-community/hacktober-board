@@ -1,13 +1,13 @@
 ## Hacktober Board
 
-Hacktober-board is an unofficial **Open Issues Board** for [Hacktoberfest](https://digitalocean.com). This project is built in Laravel using MySQL as database.
+Hacktober-board is an unofficial **Open Issues Board** for [Hacktoberfest](https://digitalocean.com). This project is built with [Laravel](https://laravel.com).
 
-It is intended to help users, especially beginners, finding issues they can contribute to in order to participate in [Hacktoberfest](https://hacktoberfest.digitalocean.com).
+It is intended to help users, especially beginners, finding issues they can contribute to in order to participate in Hacktoberfest.
 
 ## Setting Up a Dev Environment
 
 
-A Docker dev environment is included. You'll need Docker and Docker Compose installed. To set these up, you can follow [this tutorial](https://www.digitalocean.com/community/tutorials/how-to-install-docker-compose-on-ubuntu-18-04).
+A Docker dev environment is included. You'll need **Docker** and **Docker Compose** installed. To set these up, you can follow [this tutorial](https://www.digitalocean.com/community/tutorials/how-to-install-docker-compose-on-ubuntu-18-04).
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -30,7 +30,7 @@ Log into MySQL:
 mysql -u root -p
 ```
 
-The root MySQL password for the `db` container is `h4ckt0b3rd3v`.
+The root MySQL password for the `db` container is `password`.
 
 Then, create a new user while granting permissions to the `hacktober` database, and flush privileges:
 
