@@ -51,8 +51,9 @@
         <hr />
         <div class="issues-and-labels">
              <ul>
-                <li><a href="/l">All labels</a></li>
-                <li><a href="/p">All Projects</a></li>
+                <li><a href="{{ route('issues') }}">All Issues</a></li>
+                <li><a href="{{ route('labels.all') }}">All Labels</a></li>
+                <li><a href="{{ route('project.all') }}">All Projects</a></li>
             </ul>
         </div>
         <div id="footer-logo">
