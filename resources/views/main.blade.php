@@ -42,12 +42,27 @@
         <ul>
             @foreach ($all_languages as $project)
                 @if ($project->language)
-                    <li><a href="{{ route('board.list', $project->language) }}" title="View {{ $project->language }} Issues">{{ $project->language }}</a></li>
+                    <li><a href="{{ route('issues', ['filter' => ['language' => $project->language]]) }}" title="View {{ $project->language }} Issues">{{ $project->language }}</a></li>
                 @endif
             @endforeach
         </ul>
     </div>
-
+    <div id="issues-and-labels-wrap">
+        <hr />
+        <div class="issues-and-labels">
+             <ul>
+                <li><a href="{{ route('issues') }}">All Issues</a></li>
+                <li><a href="{{ route('labels.all') }}">All Labels</a></li>
+                <li><a href="{{ route('project.all') }}">All Projects</a></li>
+            </ul>
+        </div>
+        <div id="footer-logo">
+        <a href="{{route('home')}}"><img src="/img/hacktoberfest-logo.svg" />
+        </div>
+        <div id="hacktobercopy">
+            Hacktober Board  2019
+        </div>
+    </div>
 </div>
 </body>
 </html>

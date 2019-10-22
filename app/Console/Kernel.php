@@ -26,6 +26,12 @@ class Kernel extends ConsoleKernel
     {
         $schedule->command('hacktober:fetch')
                  ->everyFiveMinutes();
+
+        $schedule->command('hacktober:scheduler')
+            ->dailyAt('01:00');
+
+        $schedule->command('queue:work')
+            ->dailyAt('03:00');
     }
 
     /**

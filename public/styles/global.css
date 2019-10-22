@@ -1,242 +1,291 @@
 body {
-	background-color: #1B2248;
-	color: #FFF;
-	font-family: 'Space Mono', monospace;
-	background-image: url("../img/bg-right.png");
-	background-position: right 0px top -120px;
-	background-size: 60%;
-	background-repeat: no-repeat;
+    background-color: #1b2248;
+    color: #fff;
+    font-family: "Space Mono", monospace;
+    background-image: url("../img/bg-right.png");
+    background-position: right 0px top -120px;
+    background-size: 60%;
+    background-repeat: no-repeat;
 }
 
 header {
-	padding: 50px 1%;
+    padding: 50px 1%;
 }
 
 header .board-title {
-	float: right;
-	text-transform: uppercase;
-	font-size: 48px;
-	letter-spacing: 3px;
-	padding: 30px 20px;
+    float: right;
+    text-transform: uppercase;
+    font-size: 48px;
+    letter-spacing: 3px;
+    padding: 30px 20px;
 }
 
 .content {
-	clear: both;
-	display: flex;
-	flex-flow: row wrap;
-  	justify-content: flex-start;
+    clear: both;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
 }
 
 .content div.header {
-	display: block;
-	width: 86%;
-	margin: 1%;
+    display: block;
+    width: 86%;
+    margin: 1%;
 }
 
 .box {
-	width: 48%;	
+	width: 48%;
 	margin: 1%;
 	background: #1D2C4E;
 	box-shadow: 0px 50px 100px rgba(0, 0, 0, 0.2);
 }
 
 .box .title {
-	padding: 15px 20px;
-	background-color: #39486F;
-	text-transform: lowercase;
+    padding: 15px 20px;
+    background-color: #39486f;
+    text-transform: lowercase;
 }
 
 .highlight {
-	background-color: #FFF922;
-	color: #000;
-	padding: 2px;
-	text-transform: uppercase;
+    background-color: #fff922;
+    color: #000;
+    padding: 2px;
+    text-transform: uppercase;
 }
 
 a {
-	color: #92EAFF;
-	text-decoration: none;
+    color: #92eaff;
+    text-decoration: none;
 }
 
 a:hover {
-	color: #FF00AA;
+    color: #ff00aa;
 }
 
 ul {
-  list-style: none; /* Remove default bullets */
-  padding-inline-start: 0px;
-  margin: 0;
+    list-style: none; /* Remove default bullets */
+    padding-inline-start: 0px;
+    margin: 0;
 }
 
 ul li {
-	border-bottom: 1px solid #39486F;
-	padding: 15px;
+    border-bottom: 1px solid #39486f;
+    padding: 15px;
 }
 
 ul li:last-child {
-	border-bottom: 0;
+    border-bottom: 0;
 }
 
 .issue-author {
-	float: left;
-	text-align: right;
-	width: 10%;
-	padding: 0 2%;
-	overflow: hidden;
-	font-size: x-small;
+    float: left;
+    text-align: right;
+    width: 10%;
+    padding: 0 2%;
+    overflow: hidden;
+    font-size: x-small;
 }
 
 .issue-body {
-	float: right;
-	width: 85%;
-
+    float: right;
+    width: 85%;
 }
 
 .issue-title {
-	display: inline-block;
-	padding-bottom: 4px;
-	width: 90%;
-  	white-space: nowrap;
-  	overflow: hidden;
-  	text-overflow: ellipsis;
-  	vertical-align: top;
+    display: inline-block;
+    padding-bottom: 4px;
+    width: 90%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    vertical-align: top;
 }
 
 .issue-number {
-	float: right;
-	font-size: 14px;
+    float: right;
+    font-size: 14px;
 }
 
 .issue-language {
-	clear: both;
-	float: right;
-	margin: 1px;
+    clear: both;
+    float: right;
+    margin: 1px;
 }
 
 .issue-language a {
-	background-color: #FF00AA;
-	color: #F0F0F0;
-	font-size: 12px;
-	padding: 2px;
+    background-color: #ff00aa;
+    color: #f0f0f0;
+    font-size: 12px;
+    padding: 2px;
 }
 
 .issue-descrip {
-	max-height: 60px;
-	overflow: hidden;
-	font-size: 14px;
-	color: #99A1B3;
-	margin-bottom: 8px;
-	padding-right: 10px;
+    max-height: 60px;
+    overflow: hidden;
+    font-size: 14px;
+    color: #99a1b3;
+    margin-bottom: 8px;
+    padding-right: 10px;
 }
 
 .issue-author img {
-	width: 90%;
-	padding: 5%;
-	height: auto;
+    width: 90%;
+    padding: 5%;
+    height: auto;
 }
 
 .tags {
-	font-size: 12px;
-	padding: 20px 0px;
-	clear: both;
+    font-size: 12px;
+    padding: 20px 0px;
+    clear: both;
 }
 
 .tags .tag {
-	display: inline-block;
-	background-color: #7E1373;
-	padding: 3px;
+    display: inline-block;
+    background-color: #7e1373;
+    padding: 3px;
 }
 
-.repo-name  {
-	font-size: 12px;
-	margin-bottom: 20px;
+.repo-name {
+    font-size: 12px;
+    margin-bottom: 20px;
 }
+
+.project-stars {
+    float: right;
+    font-size: 14px;
+}
+
+.octicon {
+    display: inline-block;
+    fill: currentColor;
+}
+
 
 @media only screen and (max-width: 900px) {
-  header .board-title {
-  	font-size: 32px;
-  }
+    header .board-title {
+        font-size: 32px;
+    }
 
-  .box {
-  	width:98%;
-  }
+    .box {
+        width: 98%;
+    }
 }
 
 nav {
-	margin: 20px 0;
-	display: block;
-	width: 100%;
+    margin: 20px 0;
+    display: block;
+    width: 100%;
 }
 
 ul.pagination {
-	display: block;
-	margin: 0 auto;
-	text-align: center;
+    display: block;
+    margin: 0 auto;
+    text-align: center;
 }
 
 ul.pagination li {
-	display: inline;
+    display: inline;
 }
 
 .footer {
-	background-color: #39486F;
-	padding: 20px 2%;
-	margin-top: 60px;
-	display: flex;
-	flex-flow: row wrap;
-	justify-content: flex-start;
-	clear: both;
+    background-color: #39486f;
+    padding: 20px 2%;
+    margin-top: 60px;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+    clear: both;
 }
 
 .footer-left {
-	float: left;
-	width: 600px;
-	margin-right: 80px;
-	/*	text-align: right;*/
+    float: left;
+    width: 600px;
+    margin-right: 80px;
+    /*	text-align: right;*/
 }
 
 .footer-right {
-	float: right;
-	width: 62%;
+    float: right;
+    width: 62%;
+}
+#issues-and-labels-wrap {
+    width: 100%;
+}
+#issues-and-labels-wrap div {
+    float: left;
+    min-width: 30%;
+    font-size: 1em;
+    margin-left: 2%;
+}
+
+#footer-logo {
+    text-align: center;
+}
+#footer-logo img {
+    width: 150px;
+    height: 75px;
+}
+#hacktobercopy {
+    padding: 15px 0 0 0;
+    text-align: center;
+}
+.issues-and-labels {
+    margin: 0;
+    padding: 0;
+}
+.issues-and-labels ul li {
+    list-style: none;
+}
+.issues-and-labels ul {
+    padding: 0;
+    margin: 0;
+}
+.issues-and-labels ul li a {
+    background-color: transparent !important;
 }
 
 .footer ul li {
-	margin: 1px;
-	padding: 6px 10px;
-	border-bottom: 1px solid #39486F;
-	display: inline-flex;
+    margin: 1px;
+    padding: 6px 10px;
+    border-bottom: 1px solid #39486f;
+    display: inline-flex;
 }
 
 .footer ul li a {
-	background-color: #1D2C4E;
-	padding: 6px 10px;
+    background-color: #1d2c4e;
+    padding: 6px 10px;
 }
 
 .footer ul li a:hover {
-	background-color: #FF00AA;
-	color: #1D2C4E;
-	padding: 6px 10px;
+    background-color: #ff00aa;
+    color: #1d2c4e;
+    padding: 6px 10px;
 }
 
 .labels {
-	padding: 0px 40px;
+    padding: 0px 40px;
 }
 
 .labels ul li {
-	border-bottom: 0px;
-	padding: 6px 10px;
-	display: inline-flex;
+    border-bottom: 0px;
+    padding: 6px 10px;
+    display: inline-flex;
 }
 
 .labels ul li a {
-	background-color: #FFF922;
-	color: #000;
-	padding: 6px 10px;
-	text-decoration: none;
+    background-color: #fff922;
+    color: #000;
+    padding: 6px 10px;
+    text-decoration: none;
 }
 
 .labels ul li a:hover {
-	background-color: #FF00AA;
-	color: #000;
-	padding: 6px 10px;
+    background-color: #ff00aa;
+    color: #000;
+    padding: 6px 10px;
+}
+
+.closed, .disabled {
+    opacity: 0.3;
 }
