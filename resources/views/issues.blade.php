@@ -9,10 +9,10 @@
         </div>
     </div>
 
-    {{ $issues->links() }}
+    {{ $issues->appends(['filter' => $filter])->links()}}
 
     @each('partials/issue.single', $issues, 'issue')
 
-    {{ $issues->links() }}
+    {{ $issues->appends(['filter' => $filter])->links()}}
 
 @endsection
