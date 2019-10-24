@@ -11,22 +11,37 @@ A Docker dev environment is included. You'll need **Docker** and **Docker Compos
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+### Fork and Clone
+
+If you are planning to contribute, you will need to:
+1) fork this repository in GitHub
+1) create a local clone of your fork.
+
+If you're not familiar with this process, [click here for the really detailed version](https://help.github.com/en/github/getting-started-with-github/fork-a-repo).
+
+If you're not planning to contribute and just want to play with hacktober-board in a local dev environment, you can simply clone this repo
+
 ### Running the App on Docker
 
-First, get the environment up and running with:
+First, you need a `.env` file. If you have a particular need to customize your `.env` you may do so, but for most developers you can just use `.env.example`. Run this in your project root (where you cloned the repo):
+```shell
+cp .env.example .env
 ```
+
+Now get your dev environment up and running by bringing up the docker containers:
+```shell
 docker-compose up
 ```
 
 When the containers are up, you need to create a new MySQL user by logging in the container:
 
-```
+```shell
 docker-compose exec db bash
 ```
 
 Log into MySQL:
 
-```
+```shell
 mysql -u root -p
 ```
 
@@ -34,7 +49,7 @@ The root MySQL password for the `db` container is `password`.
 
 Then, create a new user while granting permissions to the `hacktober` database, and flush privileges:
 
-```
+```mysql
 GRANT ALL ON hacktober.* TO 'hacktober-user'@'%' IDENTIFIED BY 'password';
 FLUSH PRIVILEGES;
 ```
@@ -43,14 +58,14 @@ Exit the MySQL prompt and the container, coming back to your regular shell.
 
 To create the database tables, run migrations inside the container:
 
-```
+```shell
 docker-compose exec app php artisan migrate
 ```
 
 
 To fill the database with sample data, run the `db:seed` command:
 
-```
+```shell
 docker-compose exec app php artisan db:seed
 ```
 
@@ -59,7 +74,7 @@ To import real issues from Github, you'll need to define a Github API Token in t
 
 After setting up the API key, you can import issues with:
 
-```
+```shell
 docker-compose exec app php artisan hacktober:fetch
 ```
 
