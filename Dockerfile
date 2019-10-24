@@ -44,19 +44,15 @@ USER composer
 # Run Composer Install
 RUN /usr/local/bin/composer install
 
+# Change current user to www
+USER www-data
+
 # Since .env is in .dockerignore, we have to get it from somewhere
 RUN cp .env.example .env
 
 # Generate App Key
-#RUN php artisan key:generate
+RUN php artisan key:generate
 
-# Migrate the DB
-#RUN php artisan migrate
-
-# Seed the Table
-#RUN php artisan db:seed
-
-# Change current user to www, expose port 8000 and start php-fpm server
-USER www-data
+# Expose port 8000 and start php-fpm server
 EXPOSE 8000
 CMD ["php-fpm"]
