@@ -10,7 +10,7 @@ class GithubServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->singleton(GithubService::class, function ($app) {
-            return new GithubService(env('GITHUB_API_TOKEN', ''));
+            return new GithubService(config('services.github.token', ''));
         });
     }
 }
