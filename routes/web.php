@@ -14,8 +14,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'MainController@main')->name('home');
 
-Route::get('/i', 'MainController@Issues')->name('issues');
+Route::get('/i', 'IssueController@Issues')->name('issues');
 
-Route::get('/l', 'MainController@labelsAll')->name('labels.all');
+Route::get('/l', 'LabelController@labelsAll')->name('labels.all');
 
-Route::get('/p', 'MainController@ProjectsAll')->name('project.all');
+Route::get('/p', 'ProjectController@ProjectsAll')->name('project.all');
