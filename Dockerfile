@@ -4,7 +4,9 @@ FROM php:7.2-fpm
 RUN apt-get update && apt-get install -y \
     git \
     curl \
-    libpng-dev
+    libpng-dev \
+    zip \
+    unzip
 
 # Clear cache
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
@@ -27,6 +29,12 @@ RUN useradd -ms /bin/bash composer
 # Copy existing application directory permissions
 COPY --chown=www-data:composer . /var/www
 
+# Directory is initially owned by root:root. Change it so composer will be able to write
+RUN chown www-data:composer /var/www
+
+# Make the directory's group permissions match the owner permissions
+RUN chmod g=u /var/www
+
 # Set working directory
 WORKDIR /var/www
 
@@ -36,17 +44,14 @@ USER composer
 # Run Composer Install
 RUN /usr/local/bin/composer install
 
-# Generate App Key
-RUN php artisan key:generate
-
-# Migrate the DB
-#RUN php artisan migrate
-
-# Seed the Table
-#RUN php artisan db:seed
-
 # Change current user to www
 USER www-data
+
+# Since .env is in .dockerignore, we have to get it from somewhere
+RUN cp .env.example .env
+
+# Generate App Key
+RUN php artisan key:generate
 
 # Expose port 8000 and start php-fpm server
 EXPOSE 8000

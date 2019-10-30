@@ -12,7 +12,10 @@ services:
     networks:
       - hacktober
     volumes:
+      # Mount the entire codebase, minus paths in .dockerignore
       - ./:/var/www
+      # Mount empty volume to the image's vendor directory so we don't overwrite it
+      - vendor:/var/www/vendor
 
   db:
     image: mysql:5.7.22
@@ -42,3 +45,7 @@ services:
 networks:
   hacktober:
     driver: bridge
+
+# Specify the named volumes used above
+volumes:
+  vendor:
