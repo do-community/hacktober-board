@@ -9,6 +9,7 @@ use App\Services\GithubService;
 use App\User;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Date;
+use Illuminate\Support\Str;
 
 class FetchIssues extends Command
 {
@@ -147,7 +148,9 @@ class FetchIssues extends Command
                  *****************************************/
                 $issue_labels = [];
                 foreach ($raw_issue['labels'] as $raw_label) {
-                    $label = Label::where('name', $raw_label['name'])->first();
+                    $label_slug = Str::slug($raw_label['name']);
+
+                    $label = Label::where('slug', $label_slug)->first();
 
                     if ($label === null) {
                         //creates new label
@@ -155,6 +158,7 @@ class FetchIssues extends Command
 
                         $label = new Label();
                         $label->name = $raw_label['name'];
+                        $label->slug = $label_slug;
                         $label->save();
                     }
 

@@ -30,7 +30,7 @@
             <div class="tags">
                 @foreach ($issue->labels as $label)
                     <span class="tag"><a
-                            href="{{ route('Issue.list', ['filter' => ['label' => $label->name]]) }}"
+                            href="{{ route('Issue.list', ['filter' => ['label' => $label->slug]]) }}"
                             title="See more Issues with this Label">{{ $label->name }}</a></span>
                 @endforeach
             </div>

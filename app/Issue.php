@@ -17,7 +17,7 @@ class Issue extends Model
         }
         if (isset($filter['label'])) {
             $query->whereHas('labels', function($query) use ($filter) {
-                $query->where('name', $filter['label']);
+                $query->where('slug', $filter['label']);
             });
         }
     }
