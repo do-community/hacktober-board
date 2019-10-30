@@ -8,7 +8,7 @@ class LabelController extends Controller
 {
     public function listAction()
     {
-        return view('labels', [
+        return view('label.list', [
             'labels' => Label::all()
         ]);
     }

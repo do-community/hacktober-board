@@ -8,7 +8,7 @@ class ProjectController extends Controller
 {
     public function listAction()
     {
-        return view('projects', [
+        return view('project.list', [
             'projects' => Project::with('issues')->orderBy('stars', 'desc')->paginate(20)
         ]);
     }

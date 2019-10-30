@@ -46,7 +46,7 @@ class MainController extends Controller
             }
         }
 
-        return view('index', [
+        return view('main.index', [
             'newest_issues' => $newest_issues,
             'boards' => $boards,
             'second_level_boards' => $second_level_boards

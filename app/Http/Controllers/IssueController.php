@@ -10,7 +10,7 @@ class IssueController extends Controller
     public function listAction(Request $request)
     {
 
-        return view('issues', [
+        return view('issue.list', [
             'filter' => $request->get('filter'),
             'issues' => Issue::filter($request->get('filter'))
                 ->with('project')
