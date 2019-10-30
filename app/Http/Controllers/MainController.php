@@ -10,14 +10,7 @@ use Illuminate\Support\Facades\View;
 
 class MainController extends Controller
 {
-    public function __construct()
-    {
-        $languages = Project::distinct()->get('language');
-
-        View::share('all_languages', $languages);
-    }
-
-    public function main()
+    public function indexAction()
     {
 
         //a board is a collection of issues.
@@ -59,30 +52,4 @@ class MainController extends Controller
             'second_level_boards' => $second_level_boards
         ]);
     }
-
-    public function issues(Request $request)
-    {
-
-        return view('issues', [
-            'filter' => $request->get('filter'),
-            'issues' => Issue::filter($request->get('filter'))
-                ->with('project')
-                ->orderBy('original_created_at', 'desc')->paginate(20)
-        ]);
-    }
-
-    public function labelsAll()
-    {
-        return view('labels', [
-            'labels' => Label::all()
-        ]);
-    }
-
-    public function projectsAll()
-    {
-        return view('projects', [
-            'projects' => Project::with('issues')->orderBy('stars', 'desc')->paginate(20)
-        ]);
-    }
-
 }

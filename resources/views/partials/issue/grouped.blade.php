@@ -16,7 +16,7 @@
 
         @if ($issue->project_language)
             <div class="issue-language">
-                <a href="{{ route('issues', ['filter' => ['language' => $issue->project_language]]) }}">
+                <a href="{{ route('Issue.list', ['filter' => ['language' => $issue->project_language]]) }}">
                     {{ $issue->project_language }}
                 </a>
             </div>
@@ -32,7 +32,7 @@
 
     <div class="tags">
         @foreach ($issue->labels as $label)
-            <span class="tag"><a href="{{ route('issues', ['filter' => ['label' => $label->name]]) }}"
+            <span class="tag"><a href="{{ route('Issue.list', ['filter' => ['label' => $label->name]]) }}"
                                  title="See more Issues with this Label">{{ $label->name }}</a></span>
         @endforeach
     </div>
