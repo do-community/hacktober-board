@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\View;
 
 class MainController extends Controller
 {
-    public function main()
+    public function indexAction()
     {
 
         //a board is a collection of issues.

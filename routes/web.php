@@ -12,10 +12,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', 'MainController@main')->name('home');
+Route::get('/', 'MainController@indexAction')->name('Main.index');
 
-Route::get('/i', 'IssueController@Issues')->name('issues');
+Route::get('/i', 'IssueController@listAction')->name('Issue.list');
 
-Route::get('/l', 'LabelController@labelsAll')->name('labels.all');
+Route::get('/l', 'LabelController@listAction')->name('Label.list');
 
-Route::get('/p', 'ProjectController@ProjectsAll')->name('project.all');
+Route::get('/p', 'ProjectController@listAction')->name('Project.list');
