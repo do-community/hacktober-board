@@ -10,6 +10,10 @@ Route::resources([
     'issues'   => 'IssueController',
 ]);
 
+Route::get('/projects/{project}', 'ProjectController@show')
+    ->name('projects.show')
+    ->where('project', '.*');
+
 // legacy routes
 Route::get('/p', 'ProjectController@index')->name('projects.legacy');
 Route::get('/l', 'LabelController@index')->name('labels.legacy');

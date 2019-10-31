@@ -23,7 +23,7 @@
         @endif
 
         <div class="repo-name">
-            <a href="{{ $issue->project->html_url }}" title="Visit the project page on Github"
+            <a href="{{ route('projects.show', [$issue->project->full_name]) }}" title="Visit the project page on Github"
                target="_blank">{{ $issue->project->full_name }}</a> {{ $issue->created_at->diffForHumans() }}
         </div>
 
