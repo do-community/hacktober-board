@@ -6,7 +6,7 @@ use App\Project;
 
 class ProjectController extends Controller
 {
-    public function listAction()
+    public function index()
     {
         return view('project.list', [
             'projects' => Project::with('issues')->orderBy('stars', 'desc')->paginate(20)
