@@ -7,7 +7,7 @@ use App\Issue;
 
 class IssueController extends Controller
 {
-    public function listAction(Request $request)
+    public function index(Request $request)
     {
 
         return view('issue.list', [

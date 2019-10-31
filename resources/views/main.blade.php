@@ -19,11 +19,11 @@
 <body>
 <header>
     <span class="logo">
-        <a href="{{route('Main.index')}}">
+        <a href="{{route('main.index')}}">
         <img alt="Hacktoberfest logo" src="/img/hacktoberfest-logo.svg" width="475" />
             </a>
     </span>
-    <span class="board-title"><a href="{{route('Main.index')}}">Issues Board</a></span>
+    <span class="board-title"><a href="{{route('main.index')}}">Issues Board</a></span>
 </header>
 
 <section class="content">
@@ -44,7 +44,7 @@
         <ul>
             @foreach ($all_languages as $project)
                 @if ($project->language)
-                    <li><a href="{{ route('Issue.list', ['filter' => ['language' => $project->language]]) }}" title="View {{ $project->language }} Issues">{{ $project->language }}</a></li>
+                    <li><a href="{{ route('issues.index', ['filter' => ['language' => $project->language]]) }}" title="View {{ $project->language }} Issues">{{ $project->language }}</a></li>
                 @endif
             @endforeach
         </ul>
@@ -53,13 +53,13 @@
         <hr />
         <div class="issues-and-labels">
              <ul>
-                <li><a href="{{ route('Issue.list') }}">All Issues</a></li>
-                <li><a href="{{ route('Label.list') }}">All Labels</a></li>
-                <li><a href="{{ route('Project.list') }}">All Projects</a></li>
+                <li><a href="{{ route('issues.index') }}">All Issues</a></li>
+                <li><a href="{{ route('labels.index') }}">All Labels</a></li>
+                <li><a href="{{ route('projects.index') }}">All Projects</a></li>
             </ul>
         </div>
         <div id="footer-logo">
-        <a href="{{route('Main.index')}}"><img src="/img/hacktoberfest-logo.svg" /></a>
+        <a href="{{route('main.index')}}"><img src="/img/hacktoberfest-logo.svg" /></a>
         </div>
         <div id="hacktobercopy">
             Hacktober Board  2019
