@@ -289,3 +289,20 @@ ul.pagination li {
 .closed, .disabled {
     opacity: 0.3;
 }
+
+.header_project {
+    border: 1px dotted #39486f;
+    padding: 10px;
+    display: block;
+    width: 48%;
+    margin: 30px;
+}
+
+.header_project ul li {
+    border-bottom: 1px solid #39486f;
+    width: auto;
+}
+
+.header_project ul li strong {
+    color: #92eaff;
+}

@@ -6,7 +6,7 @@
                    class="highlight">{{ $issue->project_language }}</a>
             </div>
         @endif
-        <a href="{{ $issue->project->html_url }}">{{ $issue->project->full_name }}</a> {{ $issue->created_at->diffForHumans() }}
+        <a href="{{ route('projects.show', [$issue->project->full_name]) }}">{{ $issue->project->full_name }}</a> {{ $issue->created_at->diffForHumans() }}
     </div>
     <ul>
         <li>
