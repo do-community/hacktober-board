@@ -1,6 +1,7 @@
 version: '3'
 
 services:
+
   app:
     build:
       context: .
@@ -9,13 +10,21 @@ services:
     container_name: hacktober-app
     restart: unless-stopped
     working_dir: /var/www/
-    networks:
-      - hacktober
+    # Override the default command, adding an init script before it
+    command: bash -c "docker-compose/app/app-init.sh && php-fpm"
+    environment:
+      DB_USERNAME: ${DB_USERNAME}
+      DB_PASSWORD: ${DB_PASSWORD}
+      DB_DATABASE: ${DB_DATABASE}
     volumes:
       # Mount the entire codebase, minus paths in .dockerignore
       - ./:/var/www
       # Mount empty volume to the image's vendor directory so we don't overwrite it
-      - vendor:/var/www/vendor
+      - empty:/var/www/vendor
+    networks:
+      - hacktober
+    depends_on:
+      - db
 
   db:
     image: mysql:5.7.22
@@ -27,6 +36,9 @@ services:
       MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
       SERVICE_TAGS: dev
       SERVICE_NAME: mysql
+    volumes:
+      # The mysql image will run any .sql script you put here on up
+      - ./docker-compose/db/db-init.sql:/docker-entrypoint-initdb.d/db-init.sql
     networks:
       - hacktober
 
@@ -39,6 +51,8 @@ services:
       - ./docker-compose/nginx:/etc/nginx/conf.d/
     ports:
       - 8000:80
+    depends_on:
+      - app
     networks:
       - hacktober
 
@@ -48,4 +62,4 @@ networks:
 
 # Specify the named volumes used above
 volumes:
-  vendor:
+  empty:
